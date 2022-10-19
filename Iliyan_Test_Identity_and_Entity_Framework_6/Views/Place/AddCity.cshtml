@@ -1,0 +1,33 @@
+﻿@model Iliyan_Test_Identity_and_Entity_Framework_6.Models.City
+
+@{
+    ViewData["Title"] = "AddCity";
+}
+
+<h1>AddCity</h1>
+
+<h4>City</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddCity">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input id="Name" asp-for="Name" class="form-control" required="required" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Country" class="control-label"></label>
+                <select asp-for="CountryId" class="form-control" asp-items="ViewBag.Countries" required="required"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

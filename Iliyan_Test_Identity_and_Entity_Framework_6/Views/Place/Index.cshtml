@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Iliyan_Test_Identity_and_Entity_Framework_6.Models.DisplayPlace>
+@{
+    ViewData["Title"] = "Country and City Manager";
+}
+
+<h1>Country and City Manager</h1>
+
+<div>
+    @Html.ActionLink("Create new Country", "AddCountry")
+</div>
+<div>
+    @Html.ActionLink("Create new City", "AddCity")
+</div>
+
+<h3>@TempData["informations"]</h3>
+
+<table id="CountryAndCityTable" class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Country Id</th>
+            <th>Country Name</th>
+            <th>City Id</th>
+            <th>City Name</th>
+            <th class="dt-center editor-edit sorting_disabled" rowspan="1" colspan="1" style="width: 13px;" aria-label=""></th>>
+            <th class="dt-center editor-delete sorting_disabled" rowspan="1" colspan="1" style="width: 12px;" aria-label=""></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CountryId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CountryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CityId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CityName)
+                </td>
+                <td>
+                    <form asp-controller="Place" asp-action="EditData" asp-route-id="@item.CountryId" asp-route-id2="@item.CityId">
+                        <input type="submit" value="Edit" />
+                    </form>
+                </td>
+                <td>
+                    <form asp-controller="Place" asp-action="RemoveData" asp-route-id="@item.CountryId" asp-route-id2="@item.CityId">
+                        <input type="submit" value="Delete" />
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
